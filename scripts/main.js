@@ -8,8 +8,17 @@ let firebase = 	require('./firebase/firebaseConfig.js'),
 
  $(document).ready(function(){
     $("#title-search").prop('disabled', true);
+
+    $('#show-untracked').prop('disabled', true);
+    $('#show-unwatched').prop('disabled', true);
+    $('#show-watched').prop('disabled', true);
+	$('#show-favorites').prop('disabled', true);
+	$('#numRatingSlider').prop('disabled', true);
+	$('#numRatingNumber').prop('disabled', true);
+
    	$('#logout-btn').hide();
   	$('#login-btn').show();
+
   });
 
 // REST API///
@@ -41,8 +50,27 @@ $('#login-btn').click(function() {
  
   	$('#logout-btn').show();
   	$('#login-btn').hide();
+
   	$("#title-search").prop('disabled', false);
 	$("#title-search").prop('enabled', true);
+
+    $('#show-untracked').prop('disabled', false);
+    $('#show-untracked').prop('enabled', true);
+
+    $('#show-unwatched').prop('disabled', false);
+    $('#show-unwatched').prop('enabled', true);
+
+    $('#show-watched').prop('disabled', false);
+    $('#show-watched').prop('enabled', true);
+
+	$('#show-favorites').prop('disabled', false);
+	$('#show-favorites').prop('enabled', true);
+
+	$('#numRatingSlider').prop('disabled', false);
+	$('#numRatingSlider').prop('enabled', true);
+
+	$('#numRatingNumber').prop('disabled', false);
+	$('#numRatingNumber').prop('enabled', true);
 
   	loadMoviesToDom();
 });
@@ -66,10 +94,17 @@ $("#title-search").on("keyup", (event) => {
 		{
 			$("#title-search").val("");
 			$("#card-div").empty();
+
 			Tmdb.tmdbPrint(data);
 		});
 	}
 });
 
+$('#show-unwatched').click(function () {
+   	
+   	$("#title-search").val("");
+	$("#card-div").empty();
+	loadMoviesToDom();
+});
 
 module.exports = loadMoviesToDom;

@@ -20,9 +20,6 @@ Tmdb.searchTMDB = function(){
 	});
 };
 
-/* 
- * Display Movies on Login / Delete from Watch List
- */
 Tmdb.watchedMovieList = function (data) {
 	let newDiv = document.createElement("div");
 	newDiv.innerHTML = watchlistTemplate(data);
@@ -31,12 +28,15 @@ Tmdb.watchedMovieList = function (data) {
 	$(".remove-movie").click(function () {
 		let firebaseID = $(event.target).closest('div').attr('id').slice(5);
 		db.deleteMovieFromWatchList(firebaseID);
+		$('#div--' + firebaseID).remove();
 	});
+
+	$(".ratings").click(function () {
+		console.log('from ratings');
+	});
+
 };
 
-/*
- * Show Movies from Search / Add to Watchlist
- */
 Tmdb.tmdbPrint = function (data) {
 	let newDiv = document.createElement("div");
 	newDiv.innerHTML = cardTemplate(data);

@@ -3,7 +3,8 @@
 	<div class="card hoverable">
 	   <!-- card image -->
 	  <div class="card-image waves-effect waves-block waves-light">
-	    <img class="activator" src="https://image.tmdb.org/t/p/w500/{{imgpath}}" id="img--{{id}}">
+	    	<img class="activator" src="https://image.tmdb.org/t/p/w500/{{imgpath}}" id="img--{{id}}">
+	    	<!-- <i class="material-icons right">close</i></span> -->
 	  </div>
 
 	  <!-- small data below image -->
@@ -14,7 +15,10 @@
 
 	  <!-- log data when card clicked -->
 	<div class="card-reveal">
-	  	<span class="card-title grey-text text-darken-4">{{title}}<i class="material-icons right">close</i></span>
+		<span class="card-title grey-text text-darken-4">{{title}}
+
+		<i class="material-icons right">close</i></span>
+
 		<p id="year--{{id}}">{{release_date}}</p>
 		<br>
 		<p id="plot--{{id}}">{{overview}}</p>
@@ -23,6 +27,27 @@
 
 	</div>
 
+	<div class="ratings">
+
+	    <input class="star star-5" type="radio" id="{{firebasekey}}--star5"/>
+	    <i class="small material-icons">star</i>
+
+	    <input class="star star-4" type="radio" id="{{firebasekey}}--star4"/>
+	    <i class="small material-icons">star</i>
+
+	    <input class="star star-3"  type="radio" id="{{firebasekey}}--star3"/>
+	    <i class="small material-icons">star</i>
+
+	    <input class="star star-2" type="radio" id="{{firebasekey}}--star2"/>
+	    <i class="small material-icons">star</i>
+
+	    <input class="star star-1" type="radio" id="{{firebasekey}}--star1"/>
+		<i class="small material-icons">star</i>
+
+	</div>
+
 	<button type="button" class="btn btn-flat waves-effect waves-yellow remove-movie" id="button--{{id}}">Remove from Watch List</button>
 
-  </div>
+
+</div>
+

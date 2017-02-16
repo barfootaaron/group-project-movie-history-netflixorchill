@@ -23,4 +23,16 @@ img {
 #logout-btn {
   background-color: #448aff; }
 
+.ratings {
+  border: none; }
+
+.ratings > i {
+  color: #ccc; }
+
+.ratings:hover > i {
+  color: blue; }
+
+.ratings > i:hover ~ i {
+  color: #ccc; }
+
 /*# sourceMappingURL=styles.css.map */

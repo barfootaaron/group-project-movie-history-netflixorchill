@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Chillify</title>
+	<title>Movie History Project</title>
 	
 	<link rel="stylesheet" href="dist/css/materialize.min.css">
 	
@@ -17,46 +17,47 @@
 
 	<div class="row">
 		<div class="col s12">
-   <!--	<form class="col s12"> -->
-      	<div class="row valign-wrapper card-panel hoverable" id="search-form">
+      		<div class="row valign-wrapper card-panel hoverable" id="search-form">
 
-<!-- Search bar -->
-	      	<div class="input-field col s8">
-	         	<input id="title-search" type="text">
-	         	<label for="title-search">Search</label>
-	      	</div>
+				<!-- Search bar -->
+	      		<div class="input-field col s8">
+	         		<input id="title-search" type="text">
+	         		<label for="title-search">Search</label>
+	      		</div>
 
-<!-- Login Btns -->
-	      	<div class="col s4">
-	      	<button type="button" class="waves-effect waves-light btn" id="login-btn">Sign In</button>
-			<button type="button" class="waves-effect waves-light btn" id="logout-btn">Sign Out</button>
-			<!--		<a id="login-btn" class="waves-effect waves-light btn" href="">Sign In</a>
-					<a id="logout-btn" class="waves-effect waves-light btn" href="">Sign Out</a> -->
-			</div>	
+				<!-- Login Btns -->
+	      		<div class="col s4">
+	      			<button class="waves-effect waves-light btn" id="login-btn">Sign In</button>
+					<button class="waves-effect waves-light btn hidden-btn" id="logout-btn">Sign Out</button>
+				</div>	
 
-      	</div>
-    <!-- </form> -->
+      		</div>
   </div>
 
-  <!-- Filters -->
-  <div class="row">
+<div class="row">
   	<div class="col s12">
-  		<h2>Movie History > </h2><h2 id="search-header" class="hide">Search Results</h2><h2 id="unwatched-header" class="hide">Unwatched</h2><h2 id="watched-header" class="hide">Watched</h2><h2 id="favorites-header" class="hide">Favorites</h2>
+  		<h4>Movie History</h4>
   	</div>
-  </div>
-  <div class="row">
+
   	<div class="col s12">
-	  <a class="waves-effect waves-light btn">Show Untracked</a>
-	  <a class="waves-effect waves-light btn">Show unwatched</a>
-	  <a class="waves-effect waves-light btn">Show Watched</a>
-	</div>
-  </div>
-
-	<div id="card-div" class="row">
-		
+<!--	  <button class="waves-effect waves-light btn" id="show-untracked">Show Untracked</button> -->
+	  <button class="waves-effect waves-light btn" id="show-unwatched">Show Unwatched</button>
+	  <button class="waves-effect waves-light btn" id="show-watched">Show Watched</button>
+	  <button class="waves-effect waves-light btn" id="show-favorites">Favorites</button>
 	</div>
 
-	<script type="text/javascript" src="dist/app.js"></script>
+	<div class="col s8">
+    	<p class="range-field">
+    	<input type="range" class="range-field" id="numRatingSlider" min="0" max="10" />
+    	</p>
+	</div>
+
+</div>
+
+<div id="card-div" class="row">
+</div>
+
+<script type="text/javascript" src="dist/app.js"></script>
 	
 </body>
 </html>
