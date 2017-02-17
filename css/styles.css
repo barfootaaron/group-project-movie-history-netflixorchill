@@ -35,4 +35,7 @@ img {
 .ratings > i:hover ~ i {
   color: #ccc; }
 
+h5 {
+  font-size: 0.9em; }
+
 /*# sourceMappingURL=styles.css.map */

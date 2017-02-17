@@ -15,7 +15,6 @@ Tmdb.searchTMDB = function(){
 			method: 'GET',
 			url: `https://api.themoviedb.org/3/search/movie?query=${titleSearch}&api_key=${apikey.apiKey}`
 		}).done (function (data){
-			console.log(data);
 			resolve(data);
 		});
 	});
@@ -29,7 +28,7 @@ Tmdb.watchedMovieList = function (data) {
 
 	$(".remove-movie").click(function () {
 		let firebaseID = $(event.target).closest('div').attr('id').slice(5);
-		console.log(firebaseID);
+		// console.log(firebaseID);
 		db.deleteMovieFromWatchList(firebaseID);
 		$('#div--' + firebaseID).remove();
 	});
@@ -51,6 +50,11 @@ Tmdb.watchedMovieList = function (data) {
 
 
 Tmdb.tmdbPrint = function (data) {
+
+	if (data.results.length > 12) {
+		data.results = data.results.slice(0, 12);
+	}
+
 	let newDiv = document.createElement("div");
 	newDiv.innerHTML = cardTemplate(data);
 	$("#card-div").append(newDiv);
