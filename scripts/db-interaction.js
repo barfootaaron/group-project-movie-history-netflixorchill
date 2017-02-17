@@ -21,7 +21,7 @@ function getMoviesOnWatchList (user) {
 }
 
 function addMovieToWatchList (movie) {
-	console.log("Adding Movie to Firebase: ", movie);
+	// console.log("Adding Movie to Firebase: ", movie);
 	return new Promise ( function(resolve, reject){
 		$.ajax({
 			url: 'https://moviehistory-e4b18.firebaseio.com/movies.json',
@@ -45,8 +45,22 @@ function deleteMovieFromWatchList (movieId) {
 	});
 }
 
+function editMovieOnWatchList (movieObj, movieId) {
+	return new Promise ( function(resolve, reject){
+		$.ajax({
+			url: `https://moviehistory-e4b18.firebaseio.com/movies/${movieId}.json`,
+			type: 'PUT',
+			data: JSON.stringify(movieObj)
+		}).done (function (data){
+				resolve(data);
+		});
+	});
+}
+
+
 module.exports = {
 	getMoviesOnWatchList,
 	addMovieToWatchList,
-	deleteMovieFromWatchList
+	deleteMovieFromWatchList,
+	editMovieOnWatchList
 };

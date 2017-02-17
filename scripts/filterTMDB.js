@@ -21,6 +21,7 @@ Tmdb.searchTMDB = function(){
 };
 
 Tmdb.watchedMovieList = function (data) {
+
 	let newDiv = document.createElement("div");
 	newDiv.innerHTML = watchlistTemplate(data);
 	$("#card-div").append(newDiv);
@@ -31,11 +32,23 @@ Tmdb.watchedMovieList = function (data) {
 		$('#div--' + firebaseID).remove();
 	});
 
-	$(".ratings").click(function () {
-		console.log('from ratings');
+	$(".star").click(function (starvalue) {
+			starvalue = this.id;
+			starvalue = starvalue.slice(26);
+			data.userrating = starvalue;
+			
+			let movieObj = data;
+  			let movieID = data.firebasekey;
+  			
+  			db.editMovieOnWatchList(movieObj, movieID)
+  			.then( function(data)
+  			{
+    			console.log('Movie Object with Rating Appended :', movieObj);
+  			});		
 	});
 
 };
+
 
 Tmdb.tmdbPrint = function (data) {
 	let newDiv = document.createElement("div");
@@ -55,12 +68,15 @@ Tmdb.tmdbPrint = function (data) {
 	 	let plotGrab = $("#" + plotString).text();
 	 	let imgGrab = $("#" + imgString).attr('src').slice(32);
 
+	 	let starRating = 0;
+
 	    let movieObj = {
 	      id: divID,
 	      title: titleGrab,
 	      release_date: yearGrab,
 	      overview: plotGrab,
 	      imgpath: imgGrab,
+	      userrating: starRating,
 	      uid: user.getUser()
 	  	};
 
