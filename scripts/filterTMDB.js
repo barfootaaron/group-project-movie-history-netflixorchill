@@ -3,7 +3,7 @@
 let	Tmdb = {},
 	apikey = require('./apikey.js'),
 	cardTemplate = require("../templates/card-template.hbs"),
-	watchlistTemplate = require("../templates/watchlist.hbs"),
+	watchTemplate = require("../templates/watchlist.hbs"),
 	user = require('./firebase/user.js'),
 	db = require("./db-interaction.js"),
 	main = require("./main.js");
@@ -14,7 +14,8 @@ Tmdb.searchTMDB = function(){
 		$.ajax({
 			method: 'GET',
 			url: `https://api.themoviedb.org/3/search/movie?query=${titleSearch}&api_key=${apikey.apiKey}`
-		}).done( (data) => {
+		}).done (function (data){
+			console.log(data);
 			resolve(data);
 		});
 	});
@@ -22,29 +23,28 @@ Tmdb.searchTMDB = function(){
 
 Tmdb.watchedMovieList = function (data) {
 
-	let newDiv = document.createElement("div");
-	newDiv.innerHTML = watchlistTemplate(data);
-	$("#card-div").append(newDiv);
+	let aDiv = document.createElement("div");
+	aDiv.innerHTML = watchTemplate(data);
+	$("#card-div").append(aDiv);
 
 	$(".remove-movie").click(function () {
 		let firebaseID = $(event.target).closest('div').attr('id').slice(5);
+		console.log(firebaseID);
 		db.deleteMovieFromWatchList(firebaseID);
 		$('#div--' + firebaseID).remove();
 	});
 
-	$(".star").click(function (starvalue) {
-			starvalue = this.id;
-			starvalue = starvalue.slice(26);
-			data.userrating = starvalue;
-			
-			let movieObj = data;
-  			let movieID = data.firebasekey;
-  			
-  			db.editMovieOnWatchList(movieObj, movieID)
-  			.then( function(data)
-  			{
-    			console.log('Movie Object with Rating Appended :', movieObj);
-  			});		
+	$(".star").click(function () {
+			let starvalue = this.id;
+			let aId = starvalue.slice(0,20);
+			let cat = starvalue.slice(26);
+
+			data[aId].userrating = cat;
+
+			let movieObj = data[aId];
+  			let firebaseId = data[aId].firebasekey;
+
+  			db.editMovieOnWatchList(movieObj, firebaseId);
 	});
 
 };

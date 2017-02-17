@@ -32,8 +32,8 @@ function loadMoviesToDom() {
 		idArray.forEach(function(key)
 		{
 			movieData[key].firebasekey = key;
-			Tmdb.watchedMovieList( movieData[key]);
 		});
+		Tmdb.watchedMovieList(movieData);
 	});
 }
 

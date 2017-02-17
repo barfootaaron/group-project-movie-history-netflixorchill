@@ -45,10 +45,10 @@ function deleteMovieFromWatchList (movieId) {
 	});
 }
 
-function editMovieOnWatchList (movieObj, movieId) {
+function editMovieOnWatchList (movieObj, firebaseId) {
 	return new Promise ( function(resolve, reject){
 		$.ajax({
-			url: `https://moviehistory-e4b18.firebaseio.com/movies/${movieId}.json`,
+			url: `https://moviehistory-e4b18.firebaseio.com/movies/${firebaseId}.json`,
 			type: 'PUT',
 			data: JSON.stringify(movieObj)
 		}).done (function (data){

@@ -1,3 +1,5 @@
+{{#each .}}
+
 <div id="div--{{firebasekey}}" class="col s4 card-fixed">
 
 	<div class="card hoverable">
@@ -35,10 +37,10 @@
 		<i class="star small material-icons" id="{{firebasekey}}--star5">star</i>
 	</div>
 
-	<div class="user_rate">You rated {{title}} - {{userrating}} stars</div>
+	<div class="user_rate">You rated {{title}}, {{userrating}} Stars</div>
 
 	<button type="button" class="btn btn-flat waves-effect waves-yellow remove-movie" id="button--{{id}}">Remove from Watch List</button>
 
-
 </div>
 
+{{/each}}
